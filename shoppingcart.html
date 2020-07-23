@@ -1,0 +1,159 @@
+<script>
+      //iphone plus Button Event
+      const plusButton = document.getElementById("plusButton");
+      plusButton.addEventListener("click", function(){
+         const currentNumber = document.getElementById("currentNumber").value;
+         const convertNumber = parseFloat(currentNumber);
+         const increaseNumber = convertNumber + 1;
+         document.getElementById("currentNumber").value = increaseNumber;
+
+         const priceOfOne = document.getElementById("priceOfOne").innerText;
+         const priceOfOneInNumber = parseFloat(priceOfOne);
+         const increasePrice = priceOfOneInNumber + 1219;
+         document.getElementById("priceOfOne").innerText = increasePrice;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const convertSubTotal = parseFloat(subTotal);
+         const increaseSubTotal = convertSubTotal + 1219;
+         document.getElementById("subTotal").innerText = increaseSubTotal;
+
+         const total = document.getElementById("total").innerText;
+         const convertTotal = parseFloat(total);
+         const increaseTotal = convertTotal + 1219;
+         document.getElementById("total").innerText = increaseTotal;
+      })
+
+      //iphone Minus Button Event
+      const minusButton = document.getElementById("minusButton");
+      minusButton.addEventListener("click", function(){
+         const currentNumber = document.getElementById("currentNumber").value;
+         const convertNumber = parseFloat(currentNumber);
+         const decreaseNumber = convertNumber - 1;
+         document.getElementById("currentNumber").value = decreaseNumber;
+
+         const priceOfOne = document.getElementById("priceOfOne").innerText;
+         const priceOfOneInNumber = parseFloat(priceOfOne);
+         const decreasePrice = priceOfOneInNumber - 1219;
+         document.getElementById("priceOfOne").innerText = decreasePrice;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const convertSubTotal = parseFloat(subTotal);
+         const decreaseSubTotal = convertSubTotal - 1219;
+         document.getElementById("subTotal").innerText = decreaseSubTotal;
+
+         const total = document.getElementById("total").innerText;
+         const convertTotal = parseFloat(total);
+         const decreaseTotal = convertTotal - 1219;
+         document.getElementById("total").innerText = decreaseTotal;
+      })
+
+      //casing plus Button Event
+      const casePlus = document.getElementById("casePlus");
+      casePlus.addEventListener("click", function(){
+         const caseCurrentNumber = document.getElementById("caseCurrentNumber").value;
+         const caseConvertNumber = parseFloat(caseCurrentNumber);
+         const increaseCaseNumber = caseConvertNumber + 1;
+         document.getElementById("caseCurrentNumber").value = increaseCaseNumber;
+
+         const casePriceOne = document.getElementById("casePriceOne").innerText;
+         const casePriceOfOneInNumber = parseFloat(casePriceOne);
+         const increaseCasePrice = casePriceOfOneInNumber + 59;
+         document.getElementById("casePriceOne").innerText = increaseCasePrice;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const convertSubTotal = parseFloat(subTotal);
+         const increaseSubTotal = convertSubTotal + 59;
+         document.getElementById("subTotal").innerText = increaseSubTotal;
+
+         const total = document.getElementById("total").innerText;
+         const convertTotal = parseFloat(total);
+         const increaseTotal = convertTotal + 59;
+         document.getElementById("total").innerText = increaseTotal;
+      })
+
+      //casing minus Button Event
+      const caseMinus = document.getElementById("caseMinus");
+      caseMinus.addEventListener("click", function(){
+         const caseCurrentNumber = document.getElementById("caseCurrentNumber").value;
+         const caseConvertNumber = parseFloat(caseCurrentNumber);
+         const decreaseCaseNumber = caseConvertNumber - 1;
+         document.getElementById("caseCurrentNumber").value = decreaseCaseNumber;
+
+         const casePriceOne = document.getElementById("casePriceOne").innerText;
+         const casePriceOfOneInNumber = parseFloat(casePriceOne);
+         const decreaseCasePrice = casePriceOfOneInNumber - 59;
+         document.getElementById("casePriceOne").innerText = decreaseCasePrice;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const convertSubTotal = parseFloat(subTotal);
+         const decreaseSubTotal = convertSubTotal - 59;
+         document.getElementById("subTotal").innerText = decreaseSubTotal;
+
+         const total = document.getElementById("total").innerText;
+         const convertTotal = parseFloat(total);
+         const decreaseTotal = convertTotal - 59;
+         document.getElementById("total").innerText = decreaseTotal;
+      })
+
+   </script>
+
+
+// Phone plus button
+const phonePlusBtn = document.getElementById("phone-plus-btn")
+phonePlusBtn.addEventListener('click', function () {
+    plusButtonWork('phone-quantity','phone-price', 'case-price', 1219)
+})
+
+// Phone minus button
+const phoneMinusBtn = document.getElementById('phone-minus-btn')
+phoneMinusBtn.addEventListener('click', function () {
+    minusButtonWork('phone-quantity', 'phone-price', 'case-price', 1219)
+})
+
+// Case plus button
+const casePlusBtn = document.getElementById("case-plus-btn")
+casePlusBtn.addEventListener('click', function () {
+    plusButtonWork('case-quantity', 'case-price', 'phone-price', 59)
+})
+
+// Case minus button
+const caseMinusBtn = document.getElementById("case-minus-btn")
+caseMinusBtn.addEventListener('click', function () {
+    minusButtonWork('case-quantity', 'case-price', 'phone-price', 59)
+})
+
+
+function plusButtonWork(phoneQuantityId, phonePriceId, casePriceId, price) {
+    const phoneQuantity = document.getElementById(phoneQuantityId).value;
+    let phoneQuantityNumber = parseFloat(phoneQuantity)
+    phoneQuantityNumber++
+    document.getElementById(phoneQuantityId).value = phoneQuantityNumber;
+    const phonePrice = document.getElementById(phonePriceId).innerText
+    const phonePriceNumber = parseFloat(phonePrice)
+    document.getElementById(phonePriceId).innerText = phonePriceNumber + price;
+    document.getElementById(phoneQuantityId).value = phoneQuantityNumber;
+    const casePrice = document.getElementById(casePriceId).innerText
+    const casePriceNumber = parseFloat(casePrice)
+    const subtotal = phonePriceNumber + price + casePriceNumber
+    document.getElementById("subtotal").innerText = subtotal
+    document.getElementById('total').innerText = subtotal
+}
+
+function minusButtonWork(phoneQuantityId, phonePriceId, casePriceId, price) {
+    const phoneQuantity = document.getElementById(phoneQuantityId).value;
+    let phoneQuantityNumber = parseFloat(phoneQuantity)
+    if (phoneQuantityNumber == 0) {
+        phoneMinusBtn.setAttribute('disabled')
+    }
+    phoneQuantityNumber--
+    document.getElementById(phoneQuantityId).value = phoneQuantityNumber;
+    const phonePrice = document.getElementById(phonePriceId).innerText
+    const phonePriceNumber = parseFloat(phonePrice)
+    document.getElementById(phonePriceId).innerText = phonePriceNumber - price;
+    document.getElementById(phoneQuantityId).value = phoneQuantityNumber;
+    const casePrice = document.getElementById(casePriceId).innerText
+    const casePriceNumber = parseFloat(casePrice)
+    const subtotal = phonePriceNumber - price + casePriceNumber
+    document.getElementById("subtotal").innerText = subtotal
+    document.getElementById('total').innerText = subtotal
+}

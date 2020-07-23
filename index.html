@@ -71,7 +71,7 @@
                   </div>
                </div>
                <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  <button id="checkOut" type="button" class="btn btn-success check-out">Check Out</button>
                </div>
             </div>
          </div>
@@ -160,6 +160,15 @@
       var total = document.getElementById("total").innerText = totalPriceAmount + totalPriceWithTax;
       return total;    
    }
+
+   /*const checkOut = document.getElementById("checkOut");
+         checkOut.addEventListener("click", function(){
+         const first = document.getElementById("first");
+         first.style.display = "none";
+         const second = document.getElementById("second");
+         second.style.display = "block";
+   })*/
+
 
       
    </script>
