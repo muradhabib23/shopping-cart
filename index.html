@@ -29,8 +29,8 @@
                            <input id="phoneItem" type="text" class="form-control text-center" value="1">
                            <button id="phonePlus" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$ <span class="priceAfterCartRemove" id="phoneTotalPrice">1219</span></h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
+                        <h5>$ <span id="phoneTotalPrice">1219</span></h5>
+                        <img id="first-remove-item" src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
                </div>
@@ -48,8 +48,8 @@
                            <button id="casePlus" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$ <span class="priceAfterCartRemove" id="caseTotalPrice">59</span></h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
+                        <h5>$ <span id="caseTotalPrice">59</span></h5>
+                        <img id="second-remove-item" src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
                </div>
@@ -64,7 +64,7 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$ <span id="subtotal">1,278</span></h5>
+                        <h5>$ <span id="subtotal">1278</span></h5>
                         <h5>$ <span id="tax">63.9</span></h5>
                         <h5>$ <span id="total">1341.9</span></h5>
                      </div>
@@ -129,7 +129,7 @@
         totalprice();
          
         })
-
+      //Subtotal, Tax and Total
       function totalprice(){
          const phonePrice = document.getElementById("phoneTotalPrice").innerText;
          const phonePriceAmount =parseFloat(phonePrice);
@@ -141,29 +141,31 @@
          var total = document.getElementById("total").innerText = totalPriceAmount + totalPriceWithTax;
          return total;    
    }
+   //remove-item section
+         const removeItem = document.getElementById("first-remove-item");
+         removeItem.addEventListener("click",function (){
+         var removeItemClicked = event.target;
+         removeItemClicked.parentElement.parentElement.parentElement.style.display = "none";
+         const price = document.getElementById("phoneTotalPrice").innerText;
+         const subTotal = document.getElementById("subtotal").innerText;
+         const currentPrice = parseFloat(subTotal) - parseFloat(price);
+         document.getElementById("subtotal").innerText = currentPrice; 
+         var totalPriceWithTax = document.getElementById("tax").innerText = (5 * currentPrice) / 100;
+         var total = document.getElementById("total").innerText = currentPrice + totalPriceWithTax;
+      });
 
-        var removeItem = document.getElementsByClassName("remove-item");
-        for (let i = 0; i < removeItem.length; i++) {
-            const element = removeItem[i];
-            element.addEventListener("click", function(){
-            var elementClicked = event.target;
-            elementClicked.parentElement.parentElement.parentElement.remove();
-            var subTotal = parseInt(document.getElementById('subTotal').innerText);
-            var remainItemPrice = parseInt(document.querySelector('.priceAfterCartRemove').innerText);
-            var newSubTotal = remainItemPrice;
-            document.getElementById('subTotal').innerText = newSubTotal;
-            var tax = newSubTotal * .05;
-            document.getElementById('tax').innerText = tax;
-            var inTotal = newSubTotal + tax;
-            document.getElementById('total').innerText = inTotal;
-            if(subTotal == null){
-            document.getElementById('subTotal').innerText = "0"
-            document.getElementById('tax').innerText = "0"
-            document.getElementById('total').innerText = "0"
-        }
-    })
-         
-        }
+         const removeItemSecond = document.getElementById("second-remove-item");
+         removeItemSecond.addEventListener("click",function (){
+         var removeItemSecondClicked = event.target;
+         removeItemSecondClicked.parentElement.parentElement.parentElement.style.display = "none";
+         const price = document.getElementById("caseTotalPrice").innerText;
+         const subTotal = document.getElementById("subtotal").innerText;
+         const currentPrice = parseFloat(subTotal) - parseFloat(price);
+         document.getElementById("subtotal").innerText = currentPrice;
+         var totalPriceWithTax = document.getElementById("tax").innerText = (5 * currentPrice) / 100;
+         var total = document.getElementById("total").innerText = currentPrice + totalPriceWithTax;
+      });
+      
 
    /*const checkOut = document.getElementById("checkOut");
          checkOut.addEventListener("click", function(){
